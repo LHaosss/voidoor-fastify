@@ -1,0 +1,41 @@
+{
+  "name": "voidoor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsnd -P ./tsconfig.json --respawn ./main.ts",
+    "build": "tsc --project ./"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.4.10",
+    "cz-conventional-changelog": "^3.3.0",
+    "fastify-cli": "^5.8.0",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "@fastify/cookie": "^9.0.4",
+    "@fastify/error": "^3.3.0",
+    "@fastify/jwt": "^7.2.0",
+    "@fastify/mysql": "^4.1.0",
+    "@typescript-eslint/eslint-plugin": "^6.3.0",
+    "@typescript-eslint/parser": "^6.3.0",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.47.0",
+    "fastify": "^4.21.0",
+    "fastify-plugin": "^4.5.1",
+    "prettier": "^3.0.1",
+    "uuid": "^9.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
