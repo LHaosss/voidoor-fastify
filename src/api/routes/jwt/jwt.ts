@@ -1,7 +1,7 @@
 import { type FastifyInstance } from "fastify"
 import * as roomEndpoints from "../../endpoints/room"
 
-export async function roomRoutes(fastify: FastifyInstance, opts, done) {
+export async function jwtRoutes(fastify: FastifyInstance, opts, done) {
   // get user rooms info
   fastify.get("/rooms", { ...opts, ...roomEndpoints.getRoomsV1Options })
 

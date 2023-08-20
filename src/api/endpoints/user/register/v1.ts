@@ -1,10 +1,10 @@
-import { RouteShorthandOptionsWithHandler } from "fastify"
+import { FastifyReply, FastifyRequest, RouteShorthandOptionsWithHandler } from "fastify"
 
 export const registerV1Options: RouteShorthandOptionsWithHandler = {
-  handler: async function () {
-    console.log("registerV1Options")
-    return {
-      status: "OK",
-    }
+  handler: async function (request: FastifyRequest, reply: FastifyReply) {
+    // verify query
+
+    // logic
+    return reply
   },
 }

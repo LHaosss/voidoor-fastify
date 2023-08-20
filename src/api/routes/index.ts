@@ -1,12 +1,12 @@
 import { FastifyInstance } from "fastify"
 import fp from "fastify-plugin"
-import { userRoutes } from "./user/user"
-import { roomRoutes } from "./room/room"
+import { noneRoutes } from "./none/none"
+import { jwtRoutes } from "./jwt/jwt"
 
 export const routes = fp(async function (server: FastifyInstance) {
-  // register user routes
-  server.register(userRoutes, { prefix: "/v1" })
+  // none
+  server.register(noneRoutes)
 
-  // register room routes
-  server.register(roomRoutes, { prefix: "/v1", onReqeust: [server["authenticate"]] })
+  // jwt
+  server.register(jwtRoutes, { onRequest: [server["authenticate"]] })
 })
