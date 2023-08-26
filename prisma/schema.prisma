@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_PRISMA_URL")
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  userId   String @unique
+  username String @unique
+  password String
+  Room     Room[]
+}
+
+model Room {
+  id       Int           @id @default(autoincrement())
+  roomId   String        @unique
+  roomName String
+  info     String
+  owner    User          @relation(fields: [userId], references: [userId])
+  userId   String
+  maps     MapMetadate[]
+}
+
+model MapMetadate {
+  id             Int     @id @default(autoincrement())
+  mapId          String  @unique
+  nodeWid        Int
+  nodeHei        Int
+  background     String  @db.Text
+  materialsUrl   String
+  textUrl        String
+  miniMapUrl     String
+  materials      String  @db.Text
+  privacyArrList String  @db.Text
+  birthPoint     String  @db.Text
+  roadArr        String  @db.Text
+  isMain         Boolean
+  teleportData   String  @db.Text
+  childrenMap    String  @db.Text
+  jsonDirectory  String  @db.Text
+  Room           Room    @relation(fields: [roomId], references: [roomId])
+  roomId         String
+}

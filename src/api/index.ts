@@ -1,20 +1,21 @@
-import Fastify from "fastify"
 import { config } from "dotenv"
-import { routes } from "./routes"
+import { Server } from "./server"
 
 // init env config
 config()
 
 export const start = async function () {
-  const server = Fastify({
-    logger: true,
-  })
+  try {
+    const server = await Server()
 
-  server.register(routes)
-
-  server.ready(function () {
-    console.log(server.printRoutes)
-  })
-
-  server.listen({ port: Number(process.env.Port), host: process.env.Host })
+    server.listen({ port: Number(process.env.Port), host: process.env.Host }, (err, addr) => {
+      if (err) {
+        console.log("err:", err)
+        process.exit(1)
+      }
+      console.log(`listen at ${addr}`)
+    })
+  } catch (err) {
+    console.log(err)
+  }
 }
