@@ -3,16 +3,16 @@ import * as roomEndpoints from "../../endpoints/room"
 
 export async function jwtRoutes(fastify: FastifyInstance, opts, done) {
   // get user rooms info
-  fastify.get("/rooms", { ...opts, ...roomEndpoints.getRoomsV1Options })
+  fastify.post("/rooms/v1", { ...opts, ...roomEndpoints.getRoomsV1Options })
 
   // get rooms info by username
-  fastify.get("/rooms/:username", { ...opts, ...roomEndpoints.getRoomsByIdV1Options })
+  fastify.post("/room/info/v1", { ...opts, ...roomEndpoints.getRoomInfoByRoomIdV1Options })
 
   // create room
-  fastify.post("/create-room", { ...opts, ...roomEndpoints.createRoomV1Options })
+  fastify.post("/create-room/v1", { ...opts, ...roomEndpoints.createRoomV1Options })
 
   // delete room
-  fastify.post("/delete-room", { ...opts, ...roomEndpoints.deleteRoomV1Options })
+  fastify.post("/delete-room/v1", { ...opts, ...roomEndpoints.deleteRoomV1Options })
 
   done()
 }

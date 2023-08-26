@@ -5,13 +5,17 @@ import { Server } from "./server"
 config()
 
 export const start = async function () {
-  const server = await Server()
+  try {
+    const server = await Server()
 
-  server.listen({ port: Number(process.env.Port), host: process.env.Host }, (err, addr) => {
-    if (err) {
-      console.log("err:", err)
-      process.exit(1)
-    }
-    console.log(`listen at ${addr}`)
-  })
+    server.listen({ port: Number(process.env.Port), host: process.env.Host }, (err, addr) => {
+      if (err) {
+        console.log("err:", err)
+        process.exit(1)
+      }
+      console.log(`listen at ${addr}`)
+    })
+  } catch (err) {
+    console.log(err)
+  }
 }
